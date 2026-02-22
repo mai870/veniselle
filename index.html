@@ -2,19 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>8-Week Glute Guide \u2014 Free Access</title>
-
-<!-- PRECONNECT: speeds up font loading -->
+<title>8-Week Glute Guide &#8212; Get Free Access</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- FONTS: load async so they don't block page render -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
-
 <style>
-  /* CRITICAL CSS \u2014 everything needed for above-the-fold render */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
@@ -22,149 +17,190 @@
     --warm-white: #FFF9F4;
     --blush: #E8C4B0;
     --rose: #C97B5A;
+    --rose-dark: #A85C3A;
     --deep: #1A1410;
     --mocha: #6B4C3B;
     --gold: #C9A96E;
   }
 
-  html { scroll-behavior: smooth; }
-
-  body {
-    /* System fonts as instant fallback \u2014 page renders immediately */
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--cream);
-    color: var(--deep);
+  html, body {
+    min-height: 100%;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--deep);
+    color: var(--warm-white);
     overflow-x: hidden;
   }
 
-  /* HERO \u2014 above the fold, renders instantly */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
+  /* BACKGROUND TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 20%, rgba(201,123,90,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 80%, rgba(201,169,110,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
   }
 
-  .hero-left {
-    background: var(--deep);
+  /* MAIN WRAPPER */
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    top: -100px; left: -100px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(201,123,90,0.2) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .badge {
-    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(201,169,110,0.15);
-    border: 1px solid rgba(201,169,110,0.3);
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 600;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  /* TOP BRAND */
+  .brand {
+    font-size: 12px;
+    font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 8px 16px;
-    border-radius: 100px;
-    width: fit-content;
-    margin-bottom: 32px;
-    animation: fadeUp 0.5s ease both;
+    color: rgba(250,247,242,0.35);
+    margin-bottom: 48px;
+    animation: fadeDown 0.5s ease both;
   }
 
-  .badge::before { content: '\u25cf'; font-size: 8px; animation: pulse 2s infinite; }
-
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  .hero-headline {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(36px, 4vw, 56px);
-    font-weight: 900;
-    line-height: 1.1;
-    color: var(--warm-white);
-    margin-bottom: 24px;
-    animation: fadeUp 0.5s ease 0.05s both;
-  }
-
-  .hero-headline em { font-style: italic; color: var(--blush); }
-
-  .hero-sub {
-    font-size: 16px;
-    line-height: 1.7;
-    color: rgba(250,247,242,0.65);
-    margin-bottom: 36px;
-    max-width: 440px;
-    font-weight: 300;
+  /* CARD */
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255,249,244,0.04);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
     animation: fadeUp 0.5s ease 0.1s both;
   }
 
-  .proof-strip {
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,123,90,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* GUIDE BADGE */
+  .guide-badge {
     display: flex;
-    gap: 28px;
-    margin-bottom: 40px;
-    animation: fadeUp 0.5s ease 0.15s both;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
   }
 
-  .proof-item { display: flex; flex-direction: column; gap: 4px; }
-
-  .proof-number {
-    font-family: 'Playfair Display', Georgia, serif;
+  .guide-icon-wrap {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
     font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .guide-badge-text { display: flex; flex-direction: column; gap: 2px; }
+
+  .guide-badge-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--warm-white);
   }
 
-  .proof-label {
-    font-size: 11px;
-    color: rgba(250,247,242,0.5);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .divider-line { width: 1px; background: rgba(250,247,242,0.1); align-self: stretch; }
-
-  .cta-box {
-    background: rgba(255,249,244,0.05);
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 16px;
-    padding: 28px;
-    animation: fadeUp 0.5s ease 0.2s both;
-  }
-
-  .cta-label {
+  .guide-badge-sub {
     font-size: 12px;
     color: var(--gold);
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+    font-weight: 500;
   }
 
-  .cta-title {
+  /* HEADLINE */
+  .headline {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 20px;
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
     color: var(--warm-white);
-    margin-bottom: 18px;
-    line-height: 1.3;
+    margin-bottom: 14px;
   }
 
-  /* MAIN CTA BUTTON */
-  .unlock-btn {
-    display: block;
+  .headline em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .subline {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(250,247,242,0.55);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(201,169,110,0.1);
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(250,247,242,0.8);
+  }
+
+  .check-dot {
+    width: 20px; height: 20px;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+    color: white;
+    font-weight: 700;
+  }
+
+  /* FORM */
+  .form-wrap { display: flex; flex-direction: column; gap: 12px; }
+
+  .email-input {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255,249,244,0.07);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--warm-white);
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .email-input::placeholder { color: rgba(250,247,242,0.3); }
+
+  .email-input:focus {
+    border-color: var(--rose);
+    background: rgba(255,249,244,0.1);
+  }
+
+  .submit-btn {
     width: 100%;
     padding: 18px 24px;
-    background: linear-gradient(135deg, #C97B5A 0%, #A85C3A 100%);
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
     color: white;
     border: none;
     border-radius: 10px;
@@ -172,273 +208,140 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    text-decoration: none;
-    text-align: center;
     letter-spacing: 0.3px;
-    /* GPU-accelerated \u2014 no layout reflow on hover */
     will-change: transform;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .unlock-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,123,90,0.4); }
-
-  .trust-note {
-    margin-top: 12px;
-    font-size: 12px;
-    color: rgba(250,247,242,0.35);
-    text-align: center;
-  }
-
-  /* HERO RIGHT */
-  .hero-right {
-    background: var(--warm-white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 40px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 6px 24px rgba(201,123,90,0.35);
     position: relative;
-    overflow: hidden;
   }
 
-  .testimonial-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    max-width: 360px;
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(201,123,90,0.45);
   }
 
-  .main-visual {
-    background: linear-gradient(135deg, var(--blush) 0%, #D4956E 100%);
-    border-radius: 18px;
-    padding: 36px 28px;
+  .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+  /* LOADING SPINNER */
+  .spinner {
+    display: none;
+    width: 18px; height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .btn-text { display: block; }
+
+  .trust-line {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(250,247,242,0.25);
+    margin-top: 4px;
+  }
+
+  /* ERROR MESSAGE */
+  .error-msg {
+    display: none;
+    background: rgba(220,60,60,0.1);
+    border: 1px solid rgba(220,60,60,0.3);
+    color: #ff8a8a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
     text-align: center;
   }
 
-  .guide-icon { font-size: 56px; margin-bottom: 14px; display: block; }
+  /* SUCCESS STATE */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+    animation: fadeUp 0.4s ease both;
+  }
 
-  .guide-title {
+  .success-icon {
+    font-size: 52px;
+    margin-bottom: 16px;
+    display: block;
+    animation: bounceIn 0.5s ease both;
+  }
+
+  .success-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 900;
-    color: white;
-    margin-bottom: 6px;
+    color: var(--warm-white);
+    margin-bottom: 10px;
   }
 
-  .guide-subtitle { font-size: 13px; color: rgba(255,255,255,0.8); }
-
-  .includes-list {
-    background: white;
-    border-radius: 14px;
-    padding: 18px 22px;
-    border: 1px solid rgba(201,123,90,0.1);
-    /* Use contain to limit repaint scope */
-    contain: layout style;
+  .success-sub {
+    font-size: 15px;
+    color: rgba(250,247,242,0.55);
+    line-height: 1.6;
+    max-width: 340px;
+    margin: 0 auto;
   }
 
-  .includes-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--mocha);
-    margin-bottom: 12px;
-    opacity: 0.6;
+  .success-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: rgba(250,247,242,0.25);
   }
 
-  .include-item {
+  /* SOCIAL PROOF STRIP */
+  .social-proof {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(201,169,110,0.1);
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(107,76,59,0.06);
-    font-size: 14px;
-    color: var(--deep);
-  }
-
-  .include-item:last-child { border-bottom: none; }
-
-  .include-check {
-    width: 20px; height: 20px;
-    background: linear-gradient(135deg, #C97B5A, #A85C3A);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 10px;
-    color: white;
-  }
-
-  .testimonial-card {
-    background: white;
-    border-radius: 14px;
-    padding: 18px;
-    border: 1px solid rgba(201,123,90,0.1);
-  }
-
-  .stars { color: #F5A623; font-size: 13px; letter-spacing: 2px; margin-bottom: 8px; }
-
-  .testimonial-text {
+    justify-content: center;
+    gap: 6px;
     font-size: 13px;
-    line-height: 1.6;
-    color: var(--mocha);
-    margin-bottom: 12px;
-    font-style: italic;
+    color: rgba(250,247,242,0.35);
   }
 
-  .testimonial-author { display: flex; align-items: center; gap: 10px; }
+  .avatars {
+    display: flex;
+    margin-right: 4px;
+  }
 
-  .author-avatar {
-    width: 34px; height: 34px;
+  .avatar {
+    width: 26px; height: 26px;
     border-radius: 50%;
+    border: 2px solid var(--deep);
+    margin-left: -8px;
+    font-size: 11px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700; color: white;
-    flex-shrink: 0;
+    color: white;
+    font-weight: 700;
   }
 
-  .author-name { font-size: 13px; font-weight: 600; color: var(--deep); }
-  .author-detail { font-size: 11px; color: rgba(26,20,16,0.4); }
+  .avatar:first-child { margin-left: 0; }
 
-  /* =====================
-     BELOW FOLD \u2014 non-critical, loads after hero
-     ===================== */
-
-  .section { padding: 90px 60px; max-width: 1100px; margin: 0 auto; }
-
-  .section-tag {
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--rose); margin-bottom: 14px;
+  .stars-small {
+    color: #F5A623;
+    font-size: 11px;
+    letter-spacing: 1px;
   }
 
-  .section-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(30px, 3.5vw, 46px);
-    font-weight: 900; line-height: 1.15;
-    color: var(--deep); margin-bottom: 18px;
+  /* BOTTOM TRUST */
+  .bottom-trust {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 11px;
+    color: rgba(250,247,242,0.2);
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.5s ease 0.3s both;
   }
-
-  .section-title em { font-style: italic; color: var(--rose); }
-  .section-body { font-size: 16px; line-height: 1.8; color: var(--mocha); max-width: 560px; font-weight: 300; }
-
-  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
-
-  .pain-card {
-    background: white; border-radius: 14px; padding: 24px;
-    border: 1px solid rgba(107,76,59,0.08);
-    transition: transform 0.2s ease;
-    contain: layout style;
-  }
-
-  .pain-card:hover { transform: translateY(-3px); }
-  .pain-emoji { font-size: 26px; margin-bottom: 12px; display: block; }
-  .pain-title { font-size: 15px; font-weight: 600; color: var(--deep); margin-bottom: 6px; }
-  .pain-desc { font-size: 13px; line-height: 1.6; color: var(--mocha); opacity: 0.8; }
-
-  .how-section { background: var(--deep); padding: 90px 60px; }
-  .how-inner { max-width: 1100px; margin: 0 auto; }
-  .how-section .section-title { color: var(--warm-white); }
-  .how-section .section-body { color: rgba(250,247,242,0.6); }
-
-  .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 50px; }
-
-  .step-card {
-    background: rgba(255,249,244,0.04);
-    border: 1px solid rgba(201,169,110,0.15);
-    border-radius: 14px; padding: 28px 24px;
-  }
-
-  .step-number {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 56px; font-weight: 900;
-    color: rgba(201,169,110,0.15); line-height: 1; margin-bottom: 14px;
-  }
-
-  .step-title { font-size: 16px; font-weight: 600; color: var(--warm-white); margin-bottom: 8px; }
-  .step-desc { font-size: 13px; line-height: 1.7; color: rgba(250,247,242,0.5); }
-
-  .inside-section { padding: 90px 60px; background: var(--warm-white); }
-  .inside-inner { max-width: 1100px; margin: 0 auto; }
-  .inside-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 50px; }
-
-  .inside-card {
-    background: white; border-radius: 16px; padding: 28px 24px;
-    border: 1px solid rgba(107,76,59,0.08); text-align: center;
-    transition: transform 0.2s ease;
-  }
-
-  .inside-card:hover { transform: translateY(-4px); }
-  .inside-icon { font-size: 36px; margin-bottom: 14px; display: block; }
-
-  .inside-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 18px; font-weight: 700; color: var(--deep); margin-bottom: 8px;
-  }
-
-  .inside-desc { font-size: 13px; line-height: 1.7; color: var(--mocha); opacity: 0.7; }
-
-  .testimonials-section { padding: 90px 60px; background: var(--cream); }
-  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 50px; }
-
-  .t-card {
-    background: white; border-radius: 14px; padding: 24px;
-    border: 1px solid rgba(107,76,59,0.08);
-  }
-
-  .final-cta {
-    background: linear-gradient(135deg, var(--deep) 0%, #2D1F17 100%);
-    padding: 110px 60px; text-align: center; position: relative; overflow: hidden;
-  }
-
-  .final-cta::before {
-    content: '';
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(201,123,90,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .final-cta-inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
-
-  .final-headline {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(34px, 4vw, 52px);
-    font-weight: 900; color: var(--warm-white);
-    line-height: 1.15; margin-bottom: 18px;
-  }
-
-  .final-headline em { color: var(--blush); font-style: italic; }
-
-  .final-sub {
-    font-size: 16px; color: rgba(250,247,242,0.55);
-    line-height: 1.7; margin-bottom: 40px; font-weight: 300;
-  }
-
-  .final-btn {
-    display: inline-block;
-    padding: 20px 52px;
-    background: linear-gradient(135deg, #C97B5A 0%, #A85C3A 100%);
-    color: white; border: none; border-radius: 12px;
-    font-family: inherit; font-size: 17px; font-weight: 600;
-    cursor: pointer; text-decoration: none;
-    will-change: transform;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 8px 28px rgba(201,123,90,0.35);
-  }
-
-  .final-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(201,123,90,0.45); }
-
-  .final-trust {
-    margin-top: 20px; font-size: 12px;
-    color: rgba(250,247,242,0.3);
-    display: flex; align-items: center; justify-content: center; gap: 18px;
-  }
-
-  /* SCROLL REVEAL */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ANIMATIONS */
   @keyframes fadeUp {
@@ -446,229 +349,188 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 50px 24px; }
-    .hero-right { padding: 36px 24px; }
-    .pain-grid, .steps-grid, .inside-grid, .testimonials-grid { grid-template-columns: 1fr; }
-    .section, .how-section, .inside-section, .testimonials-section, .final-cta { padding: 60px 20px; }
-    .proof-strip { gap: 16px; }
-    .final-btn { padding: 18px 32px; font-size: 16px; }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 520px) {
+    .card { padding: 36px 24px; border-radius: 18px; }
+    .headline { font-size: 28px; }
   }
 </style>
 </head>
 <body>
 
-<!-- HERO \u2014 renders instantly, no blocking resources -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="badge">Free Instant Access</div>
+<div class="page">
 
-    <h1 class="hero-headline">
-      Stop doing squats that<br>
-      <em>change nothing.</em>
+  <div class="brand">Amanda &amp; Filippa Fransson</div>
+
+  <div class="card" id="mainCard">
+
+    <!-- GUIDE BADGE -->
+    <div class="guide-badge">
+      <div class="guide-icon-wrap">&#127825;</div>
+      <div class="guide-badge-text">
+        <div class="guide-badge-title">8-Week Glute Guide</div>
+        <div class="guide-badge-sub">&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp;Free Access</div>
+      </div>
+    </div>
+
+    <!-- HEADLINE -->
+    <h1 class="headline">
+      You&rsquo;re one step away<br>from <em>real results.</em>
     </h1>
-
-    <p class="hero-sub">
-      I spent 6 months doing the same Instagram workouts with zero results. Then I learned the one thing that actually makes glutes grow \u2014 and built an 8-week system around it. It's yours, free.
+    <p class="subline">
+      Enter your email and get instant access &mdash; no payment, no catch. Just the exact 8-week plan that finally makes glutes grow.
     </p>
 
-    <div class="proof-strip">
-      <div class="proof-item">
-        <span class="proof-number">8</span>
-        <span class="proof-label">Weeks</span>
+    <!-- CHECKLIST -->
+    <div class="checklist">
+      <div class="check-item">
+        <span class="check-dot">&#10003;</span>
+        8 weeks of progressive workouts
       </div>
-      <div class="divider-line"></div>
-      <div class="proof-item">
-        <span class="proof-number">4\u20136x</span>
-        <span class="proof-label">Per week</span>
+      <div class="check-item">
+        <span class="check-dot">&#10003;</span>
+        Video demos for every exercise
       </div>
-      <div class="divider-line"></div>
-      <div class="proof-item">
-        <span class="proof-number">100%</span>
-        <span class="proof-label">Free</span>
+      <div class="check-item">
+        <span class="check-dot">&#10003;</span>
+        Complete nutrition plan included
+      </div>
+      <div class="check-item">
+        <span class="check-dot">&#10003;</span>
+        Zero guesswork &mdash; just show up and execute
       </div>
     </div>
 
-    <div class="cta-box">
-      <div class="cta-label">Get Instant Access</div>
-      <div class="cta-title">Unlock the 8-Week Glute Guide \u2014 Free</div>
-      <a class="unlock-btn" href="https://glutes.systeme.io/fa655ead" target="_blank">
-        Yes, I Want Free Access \u2192
-      </a>
-      <p class="trust-note">\ud83d\udd12 No payment required. Instant access after sign-up.</p>
-    </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="testimonial-stack">
-      <div class="main-visual">
-        <span class="guide-icon">\ud83c\udf51</span>
-        <div class="guide-title">8-Week Glute Guide</div>
-        <div class="guide-subtitle">By Amanda & Filippa Fransson</div>
-      </div>
-
-      <div class="includes-list">
-        <div class="includes-title">What's inside</div>
-        <div class="include-item"><span class="include-check">\u2713</span>8 weeks of progressive workouts</div>
-        <div class="include-item"><span class="include-check">\u2713</span>Video demos for every exercise</div>
-        <div class="include-item"><span class="include-check">\u2713</span>Complete nutrition plan</div>
-        <div class="include-item"><span class="include-check">\u2713</span>4\u20136 sessions per week</div>
-        <div class="include-item"><span class="include-check">\u2713</span>Zero guesswork. Just results.</div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">\u2605\u2605\u2605\u2605\u2605</div>
-        <p class="testimonial-text">"I had tried everything. This was the first program where I actually felt my glutes working. By week 4 my jeans were fitting differently."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:linear-gradient(135deg,#C97B5A,#A85C3A);">S</div>
-          <div>
-            <div class="author-name">Sarah M.</div>
-            <div class="author-detail">Completed Week 8</div>
-          </div>
+    <!-- FORM -->
+    <div id="formSection">
+      <div class="form-wrap">
+        <input
+          type="email"
+          class="email-input"
+          id="emailInput"
+          placeholder="Your email address"
+          autocomplete="email"
+          inputmode="email"
+        >
+        <div class="error-msg" id="errorMsg">
+          Please enter a valid email address.
         </div>
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+          <span class="btn-text" id="btnText">Yes, Send Me the Guide &rarr;</span>
+          <span class="spinner" id="spinner"></span>
+        </button>
+        <p class="trust-line">&#128274; No spam. Unsubscribe anytime.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- PROBLEM -->
-<section style="padding:90px 60px;background:var(--cream);">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-tag reveal">Sound familiar?</div>
-    <h2 class="section-title reveal">You're putting in the work.<br><em>Nothing is changing.</em></h2>
-    <p class="section-body reveal">You're not lazy. You're not doing it wrong on purpose. You just never got told the truth about why glutes actually grow \u2014 and why everything else keeps failing you.</p>
-    <div class="pain-grid">
-      <div class="pain-card reveal">
-        <span class="pain-emoji">\ud83d\udcf1</span>
-        <div class="pain-title">Saved 200+ workouts. Done maybe 3.</div>
-        <div class="pain-desc">Instagram gives you inspiration but zero structure. You switch routines every week and your body never has time to respond.</div>
-      </div>
-      <div class="pain-card reveal">
-        <span class="pain-emoji">\ud83e\ude9e</span>
-        <div class="pain-title">The mirror says the same thing every morning.</div>
-        <div class="pain-desc">You stand there, turn sideways, look for progress. There isn't any. You leave the house feeling defeated before the day even starts.</div>
-      </div>
-      <div class="pain-card reveal">
-        <span class="pain-emoji">\ud83c\udfcb\ufe0f\u200d\u2640\ufe0f</span>
-        <div class="pain-title">You wander the gym not knowing what to do.</div>
-        <div class="pain-desc">20 minutes of cardio because it feels safe. Some squats. Maybe a machine. You leave wondering if any of it mattered.</div>
-      </div>
-      <div class="pain-card reveal">
-        <span class="pain-emoji">\ud83d\ude14</span>
-        <div class="pain-title">Your body thinks about it 47 times a day.</div>
-        <div class="pain-desc">The outfit changes. The photo angles. The beach invites you decline. It's exhausting carrying this much mental weight around your body.</div>
-      </div>
+    <!-- SUCCESS STATE (hidden until form submitted) -->
+    <div class="success-state" id="successState">
+      <span class="success-icon">&#9989;</span>
+      <div class="success-title">You&rsquo;re in!</div>
+      <p class="success-sub">
+        Check your inbox &mdash; your free 8-Week Glute Guide is on its way right now.
+      </p>
+      <p class="success-note">
+        Don&rsquo;t see it? Check your spam folder and mark us as safe.
+      </p>
     </div>
-  </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section class="how-section">
-  <div class="how-inner">
-    <div class="section-tag reveal" style="color:var(--gold);">Why this works</div>
-    <h2 class="section-title reveal">Your glutes stopped growing<br>because they had <em style="color:var(--blush);">no reason to.</em></h2>
-    <p class="section-body reveal">Bodyweight squats and resistance bands feel hard. But your body adapted to them in week 2. After that, it had exactly enough muscle to handle the load \u2014 so it stopped building. This isn't about effort. It's about giving your muscles an increasing demand they can't ignore.</p>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-number">01</div>
-        <div class="step-title">Progressive Overload, Built In</div>
-        <div class="step-desc">Every week, the program increases the demand on your glutes. More weight, more volume, structured progression. Your muscles never get the chance to adapt and stop growing.</div>
+    <!-- SOCIAL PROOF -->
+    <div class="social-proof" id="socialProof">
+      <div class="avatars">
+        <div class="avatar" style="background:linear-gradient(135deg,#C97B5A,#A85C3A);">S</div>
+        <div class="avatar" style="background:linear-gradient(135deg,#9B6B4A,#6B3A25);">A</div>
+        <div class="avatar" style="background:linear-gradient(135deg,#B87B5A,#8B5A3A);">M</div>
+        <div class="avatar" style="background:linear-gradient(135deg,#C97B5A,#8B4A2F);">L</div>
       </div>
-      <div class="step-card reveal">
-        <div class="step-number">02</div>
-        <div class="step-title">Exercises That Actually Target Glutes</div>
-        <div class="step-desc">Hip thrusts. Romanian deadlifts. Loaded squats. Not cardio. Not bodyweight burnouts. Exercises that create the mechanical tension your glutes need to build real size and shape.</div>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-number">03</div>
-        <div class="step-title">Nutrition That Supports Growth</div>
-        <div class="step-desc">You can't build muscle in a calorie deficit with 60g of protein. The guide tells you exactly what to eat, how much, and when \u2014 so your body has the raw materials to actually build.</div>
-      </div>
+      <span class="stars-small">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span>Join 2,400+ women already inside</span>
     </div>
-  </div>
-</section>
 
-<!-- WHAT'S INSIDE -->
-<section class="inside-section">
-  <div class="inside-inner">
-    <div class="section-tag reveal">Everything included</div>
-    <h2 class="section-title reveal">One plan. Eight weeks.<br><em>Zero guesswork.</em></h2>
-    <div class="inside-grid">
-      <div class="inside-card reveal">
-        <span class="inside-icon">\ud83d\udccb</span>
-        <div class="inside-title">Structured Workouts</div>
-        <div class="inside-desc">4\u20136 sessions per week, every exercise laid out with sets, reps, and rest periods. You open the guide and execute. That's it.</div>
-      </div>
-      <div class="inside-card reveal">
-        <span class="inside-icon">\ud83c\udfac</span>
-        <div class="inside-title">Video Demonstrations</div>
-        <div class="inside-desc">Every exercise has a video demo so you know exactly how to perform it, where to feel it, and how to load it properly.</div>
-      </div>
-      <div class="inside-card reveal">
-        <span class="inside-icon">\ud83e\udd57</span>
-        <div class="inside-title">Nutrition Plan</div>
-        <div class="inside-desc">No macro confusion. No guessing. The meal plan tells you what to eat to support muscle growth without fear of gaining fat.</div>
-      </div>
-    </div>
   </div>
-</section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="testimonials-inner">
-    <div class="section-tag reveal">Real results</div>
-    <h2 class="section-title reveal">Women who were exactly<br>where <em>you are now.</em></h2>
-    <div class="testimonials-grid">
-      <div class="t-card reveal">
-        <div class="stars">\u2605\u2605\u2605\u2605\u2605</div>
-        <p class="testimonial-text">"I'd been doing squats for a year with no visible change. Eight weeks in and I finally see actual shape and projection. My boyfriend noticed before I even said anything."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:linear-gradient(135deg,#C97B5A,#8B4A2F);">L</div>
-          <div><div class="author-name">Lauren K.</div><div class="author-detail">Lost 4cm off waist, gained 6cm on glutes</div></div>
-        </div>
-      </div>
-      <div class="t-card reveal">
-        <div class="stars">\u2605\u2605\u2605\u2605\u2605</div>
-        <p class="testimonial-text">"I used to wander the gym with no idea what to do. Now I walk straight to the squat rack and I know exactly what's happening. The confidence shift is real."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:linear-gradient(135deg,#9B6B4A,#6B3A25);">A</div>
-          <div><div class="author-name">Aisha R.</div><div class="author-detail">Week 8 graduate</div></div>
-        </div>
-      </div>
-      <div class="t-card reveal">
-        <div class="stars">\u2605\u2605\u2605\u2605\u2605</div>
-        <p class="testimonial-text">"I've bought three other programs. This is the only one I finished. The structure removes every excuse. I posted my progress photo and cried \u2014 in the best way."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:linear-gradient(135deg,#B87B5A,#8B5A3A);">M</div>
-          <div><div class="author-name">Maya T.</div><div class="author-detail">First program she completed</div></div>
-        </div>
-      </div>
-    </div>
+  <!-- BOTTOM TRUST STRIP -->
+  <div class="bottom-trust">
+    <span>&#128274; 100% Free</span>
+    <span>&#9889; Instant Access</span>
+    <span>&#10003; No Credit Card</span>
   </div>
-</section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="final-cta-inner">
-    <h2 class="final-headline reveal">
-      You don't need another<br>Instagram workout.<br>You need <em>a real plan.</em>
-    </h2>
-    <p class="final-sub reveal">
-      The 8-Week Glute Guide is structured, progressive, and proven. Enter your email and get instant free access \u2014 no payment, no catch.
-    </p>
-    <a class="final-btn reveal" href="https://glutes.systeme.io/fa655ead" target="_blank">
-      Get Free Instant Access \u2192
-    </a>
-    <div class="final-trust reveal">
-      <span>\ud83d\udd12 100% Free</span>
-      <span>\u26a1 Instant Access</span>
-      <span>\u2713 No Credit Card</span>
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- SCROLL REVEAL \u2014 deferred, non-blocking -->
 <script>
-  // Use
+// ============================================================
+// SYSTEME.IO FORM SUBMISSION
+// Replace YOUR_FORM_ID with the actual form ID from Systeme.io
+// To find it: Funnels → Your funnel → Edit → Click the form → Settings → Form ID
+// ============================================================
+
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function hideError() {
+  document.getElementById('errorMsg').style.display = 'none';
+}
+
+function setLoading(loading) {
+  const btn = document.getElementById('submitBtn');
+  const text = document.getElementById('btnText');
+  const spinner = document.getElementById('spinner');
+  btn.disabled = loading;
+  text.style.display = loading ? 'none' : 'block';
+  spinner.style.display = loading ? 'block' : 'none';
+}
+
+function showSuccess() {
+  document.getElementById('formSection').style.display = 'none';
+  document.getElementById('socialProof').style.display = 'none';
+  const s = document.getElementById('successState');
+  s.style.display = 'block';
+}
+
+function handleSubmit() {
+  const email = document.getElementById('emailInput').value.trim();
+  hideError();
+
+  if (!email) { showError('Please enter your email address.'); return; }
+  if (!validateEmail(email)) { showError('Please enter a valid email address.'); return; }
+
+  setLoading(true);
+
+  // Show success message briefly then redirect
+  showSuccess();
+
+  // Redirect to Systeme.io with email pre-filled
+  setTimeout(() => {
+    const encoded = encodeURIComponent(email);
+    window.location.href = 'https://glutes.systeme.io/fa655ead?email=' + encoded;
+  }, 1200);
+}
+
+// Allow Enter key to submit
+document.getElementById('emailInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') handleSubmit();
+});
+</script>
+
+</body>
+</html>
